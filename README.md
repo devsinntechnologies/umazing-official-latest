@@ -1,4 +1,4 @@
-# Next.js Project
+# Umazing-Official-v2
 
 This project is built with [Next.js](https://nextjs.org) v22.14.0.
 
@@ -7,6 +7,14 @@ This project is built with [Next.js](https://nextjs.org) v22.14.0.
 - **Tailwind CSS 4**: [Tailwind Docs](https://tailwindcss.com)
 - **ShadCN UI**: [Sonner](http://ui.shadcn.com/docs/components/sonner) for notifications.
 - **Colors**: Uses [OKLCH](https://oklch.com/) for better color management.
+
+
+Then, open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Naming Conventions
+- Use **camelCase** for folders and other files.
+- Use **PascalCase** for `.tsx` component files.
+- Use **kebab-case** for route names (e.g., `forgot-password`).
 
 ## Development
 Run the development server:
@@ -17,11 +25,7 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
-```
-
-Then, open [http://localhost:3000](http://localhost:3000) in your browser.
+````
 
 ## Deployment
 Deploy easily using [Vercel](https://vercel.com).
