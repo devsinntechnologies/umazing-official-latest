@@ -31,7 +31,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <head>
         <title>Umazing Official</title>
-        <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+        {/* <link rel="icon" type="image/svg+xml" href="/icon.svg" /> */}
       </head>
       <body className={`${urbanist.className} w-screen min-h-screen`} suppressHydrationWarning>
         <Provider>
