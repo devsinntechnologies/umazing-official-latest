@@ -7,7 +7,8 @@ import { useSignupMutation } from "@/hooks/UseAuth";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
-const page = () => {
+import requireAuth from "@/components/hoc/requieAuth";
+const Page = () => {
   const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
@@ -23,13 +24,13 @@ const page = () => {
     useSignupMutation();
 
   useEffect(() => {
-    toast.dismiss(); 
+    toast.dismiss();
     if (isLoading) {
       toast("Signing up... Please wait while we create your account.");
     } else if (isSuccess) {
       if (responseData?.success) {
         toast.success("Registration Successful! You can now log in.");
-        router.push("/auth/signin");
+        router.push("/auth/login");
       } else {
         toast.error(
           "Registration Failed: " +
@@ -84,7 +85,15 @@ const page = () => {
       <div className="flex pt-8 pb-16 items-center justify-center">
         <div className="flex flex-col gap-5 max-w-md w-full mx-2 md:mx-0">
           <div className="flex justify-center">
-            <Image src="/umazingLogo.svg" alt="logo" className="w-40 md:w-52" width={200} height={100} />
+            <Link href="/">
+              <Image
+                src="/umazingLogo.svg"
+                alt="logo"
+                className="w-40 md:w-52"
+                width={200}
+                height={100}
+              />
+            </Link>
           </div>
           <div className="space-y-8 md:p-8 p-4 border-2 border-gray-200 bg-white rounded-lg">
             <div className="text-center">
@@ -204,7 +213,7 @@ const page = () => {
                     className="absolute top-9 right-3 text-gray-500"
                   >
                     {showConfirmPassword ? (
-                    <EyeIcon size={20} />
+                      <EyeIcon size={20} />
                     ) : (
                       <EyeOffIcon size={20} />
                     )}
@@ -227,8 +236,8 @@ const page = () => {
               <div className="border-t border-gray-300"></div>
               <p className="text-sm font-bold text-black tracking-wide mt-5">
                 Already have an account?{" "}
-                <Link href="/auth/signin" className="text-primary underline">
-                  Sign in
+                <Link href="/auth/login" className="text-primary underline">
+                  Log in
                 </Link>
               </p>
             </div>
@@ -240,4 +249,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default requireAuth(Page);
