@@ -125,7 +125,7 @@ const Footer = () => {
           </ul>
         </div>
         {/* newsletter */}
-        <div className="w-full lg:w-auto">
+        <div className="w-full lg:w-[400px]">
           <h3 className="text-xl font-bold mb-3">Newsletter Sign Up</h3>
           <p>
             Sign up for exclusive updates, new arrivals & insider only discounts

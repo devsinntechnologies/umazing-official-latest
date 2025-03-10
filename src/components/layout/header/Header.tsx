@@ -49,13 +49,15 @@ const Header = () => {
       {/* main header */}
       <nav className="w-full flex items-center justify-between px-15 py-5">
         <div className="max-w-52 xl:w-64 2xl:w-72">
-          <Image
+        <Link href='/'>
+        <Image
             src="/logo.svg"
             alt="Umazing-official"
             width={100}
             height={40}
             className="w-[98px]"
           />
+        </Link>
         </div>
         {/* navlinks */}
         <ul className="flex items-center justify-center gap-6">
