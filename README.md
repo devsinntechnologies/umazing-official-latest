@@ -5,9 +5,18 @@ This project is built with [Next.js](https://nextjs.org) v22.14.0.
 ## Tech Stack
 - **Node.js**: Ensure you have the latest LTS version installed (`node -v`).
 - **Tailwind CSS 4**: [Tailwind Docs](https://tailwindcss.com)
-- **ShadCN UI**: [Sonner](http://ui.shadcn.com/docs/components/sonner) for notifications.
 - **Colors**: Uses [OKLCH](https://oklch.com/) for better color management.
 
+- **ShadCN UI**: [Sonner](http://ui.shadcn.com/docs/components/sonner) for notifications.
+````
+ toast("Event has been created", {
+          description: "Sunday, December 03, 2023 at 9:00 AM",
+          action: {
+            label: "Undo",
+            onClick: () => console.log("Undo"),
+          },
+        })
+````
 
 Then, open [http://localhost:3000](http://localhost:3000) in your browser.
 

@@ -32,12 +32,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <title>Umazing Official</title>
         <link rel="icon" type="image/svg+xml" href="/icon.svg" />
       </head>
-      <body className={`${urbanist.className} w-screen min-h-screen`}>
+      <body className={`${urbanist.className} w-screen min-h-screen`} suppressHydrationWarning>
         <Provider>
           {/* <TooltipProvider> */}
           <Child>{children}</Child>
           {/* </TooltipProvider> */}
-          <Toaster />
+          <Toaster expand={false} position="top-right" richColors/>
         </Provider>
       </body>
     </html>
