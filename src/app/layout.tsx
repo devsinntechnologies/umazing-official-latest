@@ -44,7 +44,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
           <Child>{children}</Child>
           </ThemeProvider>
-          <Toaster expand={false} position="top-right" richColors/>
+          <Toaster expand={false} position="top-right" richColors closeButton/>
         </Provider>
       </body>
     </html>
