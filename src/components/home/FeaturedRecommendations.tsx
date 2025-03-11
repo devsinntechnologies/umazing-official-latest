@@ -43,9 +43,7 @@ const FeaturedRecommendations = () => {
           spaceBetween={24}
           breakpoints={{
             1320: { slidesPerView: 4 },
-            1024: { slidesPerView: 3 },
-            592: { slidesPerView: 2 },
-            0: { slidesPerView: 1 },
+            0: { slidesPerView: "auto" },
           }}
           loop={true}
           navigation={{
@@ -71,7 +69,7 @@ const FeaturedRecommendations = () => {
                     index={index}
                     setProducts={setProducts}
                     products={products}
-                    className="w-[275px]"
+                    className="w-[275px] px-"
                   />
                 </SwiperSlide>
               ))}

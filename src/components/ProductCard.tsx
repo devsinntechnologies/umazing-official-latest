@@ -5,6 +5,7 @@ import { Trash2, Heart, Loader2, ShoppingCart, Star } from "lucide-react";
 import { toast } from "sonner";
 import Image from "next/image";
 import Link from "next/link";
+import { cn } from "@/lib/utils"
 import { useSelector } from "react-redux";
 import { usePathname, useRouter } from "next/navigation";
 import Stars from "./Stars";
@@ -22,6 +23,7 @@ const ProductCard = ({
   index,
   setProducts,
   products,
+  className
 }) => {
   const userId = useSelector((state: any) => state.authSlice?.user?.id);
   const isLoggedIn = useSelector((state: any) => state.authSlice.isLoggedIn);
@@ -156,7 +158,10 @@ const ProductCard = ({
   return (
     <div
       key={index}
-      className="w-full h-auto relative overflow-hidden border border-border hover:border-primary"
+      className={cn(
+        "w-full h-auto relative overflow-hidden border border-border hover:border-primary",
+        className
+      )}
     >
       <Link href={`/details/${product.id}`} className="w-full flex flex-col">
         <div className="bg-[#FAFAFA]">

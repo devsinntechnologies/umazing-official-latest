@@ -123,6 +123,8 @@
   }
   body {
     @apply bg-background text-foreground;
+    user-select: none;
+    overflow-x: hidden;
   }
   .truncate-multiline-2 {
     display: -webkit-box;
