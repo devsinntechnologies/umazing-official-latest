@@ -3,8 +3,11 @@ import Link from "next/link";
 import React from "react";
 import Auth from "./Auth";
 import { usePathname } from "next/navigation";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 
 const Header = () => {
+  const isLoggedIn = useSelector((state: RootState) => state.authSlice.isLoggedIn);
   const pathname = usePathname();
 
   return (
@@ -82,7 +85,7 @@ const Header = () => {
           ))}
         </ul>
         {/* authlink */}
-        <div className="flex items-center justify-center gap-5 xl:gap-8">
+        <div className={`flex items-center justify-center ${isLoggedIn ? "gap-3 xl:gap-4": "gap-5 xl:gap-8"}`}>
           <div className="flex items-center justify-center gap-3 xl:gap-4">
             {[
               {
