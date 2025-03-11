@@ -62,7 +62,7 @@ const Auth = () => {
       ) : (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <div className="size-9 rounded-full flex items-center justify-center bg-ring cursor-pointer">
+            <span className="size-9 rounded-full flex items-center justify-center bg-ring cursor-pointer">
               <Image
                 src="/icons/layout/header/user.svg"
                 alt=""
@@ -70,11 +70,11 @@ const Auth = () => {
                 height={20}
                 className="w-6"
               />
-            </div>
+            </span>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-[320px] md:w-[440px] rounded-3xl mx-2 mt-2">
             {/* profile pic and switch button */}
-            <div className="cursor-pointer px-6 py-2">
+            <div className="cursor-pointer px-6 pt-3 pb-2">
               <div className="w-full flex items-center justify-center gap-1 flex-col">
                 {userData && (
                   <div className="w-full flex items-center gap-3 justify-start">
@@ -112,9 +112,9 @@ const Auth = () => {
                   label: "Edit Profile",
                 },
                 {
-                  href: "/favourite",
+                  href: "/favourites",
                   icon: "/icons/layout/header/heart.svg",
-                  label: "Wishlist / Favourite",
+                  label: "Wishlist/Favourite",
                 },
                 {
                   href: "/notifications",

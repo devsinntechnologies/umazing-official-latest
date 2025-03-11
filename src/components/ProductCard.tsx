@@ -16,25 +16,23 @@ import {
 } from "@/hooks/UseFavourite";
 import { useAddToCartMutation, useGetUserCartQuery } from "@/hooks/UseCart";
 
-const ProductCard = ({
-  isTrending,
-  isDiscount,
-  product,
-  index,
-  setProducts,
-  products,
-  className
-}) => {
+interface ProductCardProps {
+  isTrending?: boolean;
+  isDiscount?: boolean;
+  product: any;
+  index: number;
+  setProducts: React.Dispatch<React.SetStateAction<any[]>>;
+  products: any[];
+  className?: string;
+  
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ className, isTrending, isDiscount, product, index, setProducts, products }) => { 
   const userId = useSelector((state: any) => state.authSlice?.user?.id);
   const isLoggedIn = useSelector((state: any) => state.authSlice.isLoggedIn);
   const pathname = usePathname();
   const router = useRouter();
-  const quantity = 1;
 
-  const [
-    addToCart,
-    { isSuccess: cartSuccess, isLoading: addingToCart, isError: cartError },
-  ] = useAddToCartMutation();
   const [
     addToFavourite,
     { isSuccess: addSuccess, isLoading: addingToFav, isError: addError },
@@ -68,30 +66,7 @@ const ProductCard = ({
         return updatedProducts;
       });
     }
-    if (cartSuccess) {
-      toast.success("Added to Cart");
-    }
-  }, [isLoggedIn, index, setProducts, product.isFavorite, cartSuccess]);
-
-  // Add to cart functionality
-  const handleAddToCart = async () => {
-    if (!isLoggedIn) {
-      toast.error("Not Logged In", {
-        action: {
-          label: "Login",
-          onClick: () => router.push("/auth/login"),
-        },
-      });
-      return;
-    }
-    toast("Processing", {
-      description: "Updating your cart...",
-    });
-
-    try {
-      await addToCart({ ProductId: product.id, quantity });
-    } catch (error) {}
-  };
+  }, [isLoggedIn, index, product.isFavorite, setProducts]);
 
   // Add to favorites
   const handleAddToFavorites = async () => {
