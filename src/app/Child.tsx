@@ -13,10 +13,12 @@ export default function Child({ children }: ChildProps) {
   const pathname = usePathname()
   const noHeaderRoutes = [
     '/auth',
+    '/seller'
   ];
   const noFooterRoutes = [
     '/auth',
     '/checkout',
+    '/seller'
   ];
 
   const showHeader = !noHeaderRoutes.some(route => pathname?.startsWith(route));
