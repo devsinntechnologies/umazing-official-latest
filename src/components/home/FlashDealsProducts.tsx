@@ -6,10 +6,10 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { Skeleton } from "../ui/skeleton";
 
-const FeaturedProducts = () => {
+const FlashDealsProducts = () => {
   const [products, setProducts] = useState([]);
   const [pageNo, setPageNo] = useState(1);
-  const pageSize = 15;
+  const pageSize = 8;
 
   const {
     data: productsData,
@@ -53,8 +53,8 @@ const FeaturedProducts = () => {
             ))
           : products.map((product, index) => (
               <ProductCard
-                isDiscount={false}
-                isTrending={true}
+                isDiscount={true}
+                isTrending={false}
                 key={index}
                 product={product}
                 index={index}
@@ -67,4 +67,4 @@ const FeaturedProducts = () => {
   );
 };
 
-export default FeaturedProducts;
+export default FlashDealsProducts;

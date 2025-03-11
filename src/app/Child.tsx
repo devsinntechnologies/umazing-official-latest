@@ -27,7 +27,7 @@ export default function Child({ children }: ChildProps) {
       {showHeader && <Header/>}
       {/* For Main loader */}
       <Suspense fallback={<>loading...</>}>     
-        <div className="px-6 sm:px-10 md:px-15 py-5 w-full min-h-auto">
+        <div className="w-full min-h-auto">
           {children}
         </div>
       </Suspense>

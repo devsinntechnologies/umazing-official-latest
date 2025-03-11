@@ -1,3 +1,4 @@
+
 "use client";
 import React, { useEffect, useState } from "react";
 import ProductCard from "../ProductCard";
@@ -6,10 +7,10 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { Skeleton } from "../ui/skeleton";
 
-const FeaturedProducts = () => {
+const TrendingProducts = () => {
   const [products, setProducts] = useState([]);
-  const [pageNo, setPageNo] = useState(1);
-  const pageSize = 15;
+  const [pageNo, setPageNo] = useState(2);
+  const pageSize = 8;
 
   const {
     data: productsData,
@@ -35,7 +36,7 @@ const FeaturedProducts = () => {
         {/* empty div for alignments */}
         <div className="hidden md:block md:w-40" />
       <h1 className="text-lg sm:text-xl md:text-3xl lg:text-5xl text-center font-bold">
-        Flash deals upto 60% off
+      Trending Products
       </h1>
       <Link href='/products'>
       <Button variant="link">
@@ -67,4 +68,4 @@ const FeaturedProducts = () => {
   );
 };
 
-export default FeaturedProducts;
+export default TrendingProducts;
