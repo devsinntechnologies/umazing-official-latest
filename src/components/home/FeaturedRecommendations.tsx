@@ -71,6 +71,7 @@ const FeaturedRecommendations = () => {
                     index={index}
                     setProducts={setProducts}
                     products={products}
+                    className="w-[275px]"
                   />
                 </SwiperSlide>
               ))}

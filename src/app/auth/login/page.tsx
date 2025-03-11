@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Footer from "@/components/ui/layout/auth/Footer";
+import Footer from "@/components/layout/auth/Footer";
 import { useLoginMutation } from "@/hooks/UseAuth";
 import { useDispatch } from "react-redux";
 import { setLogin } from "@/slice/authSlice";

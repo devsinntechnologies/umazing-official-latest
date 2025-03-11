@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Footer from "@/components/ui/layout/auth/Footer";
+import Footer from "@/components/layout/auth/Footer";
 import { useSignupMutation } from "@/hooks/UseAuth";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
