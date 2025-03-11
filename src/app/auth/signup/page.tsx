@@ -177,7 +177,7 @@ const Page = () => {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute top-9 right-3 text-gray-500"
+                    className="absolute cursor-pointer top-9 right-3 text-gray-500"
                   >
                     {showPassword ? (
                       <EyeIcon size={20} />
@@ -210,7 +210,7 @@ const Page = () => {
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute top-9 right-3 text-gray-500"
+                    className="absolute cursor-pointer top-9 right-3 text-gray-500"
                   >
                     {showConfirmPassword ? (
                       <EyeIcon size={20} />
@@ -222,21 +222,21 @@ const Page = () => {
               </div>
               <button
                 type="submit"
-                className="w-full tracking-wide font-bold flex justify-center py-3 px-4 border border-transparent rounded-full text-sm text-white bg-primary focus:outline-none"
+                className="w-full tracking-wide font-bold flex justify-center py-3 px-4 border border-transparent rounded-full text-sm text-white bg-primary focus:outline-none cursor-pointer"
               >
                 Continue
               </button>
             </form>
             <div className="text-sm text-gray-500 mt-4">
               By continuing, you agree to umazing{" "}
-              <span className="text-primary">Conditions of Use</span> and{" "}
-              <span className="text-primary">Privacy Notice</span>
+              <span className="text-primary cursor-pointer">Conditions of Use</span> and{" "}
+              <span className="text-primary cursor-pointer">Privacy Notice</span>
             </div>
             <div>
               <div className="border-t border-gray-300"></div>
               <p className="text-sm font-bold text-black tracking-wide mt-5">
                 Already have an account?{" "}
-                <Link href="/auth/login" className="text-primary underline">
+                <Link href="/auth/login" className="text-primary underline cursor-pointer">
                   Log in
                 </Link>
               </p>

@@ -15,7 +15,7 @@ const Banner: React.FC<ReusableComponentProps> = ({ heading, para }) => {
             {heading}
           </div>
         )}
-        {para && <p className="text-center text-[#6B7280] md:w-[80%] w-[90%] lg:w-[50%] text-xl tracking-wide">{para}</p>}
+        {para && <p className="text-center text-[#6B7280] md:w-[80%] w-[90%] lg:w-[50%] md:text-xl text-base  tracking-wide">{para}</p>}
       </div>
     </div>
   );

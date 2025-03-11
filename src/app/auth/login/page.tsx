@@ -101,7 +101,7 @@ const Page = () => {
 
                   <button
                     type="button"
-                    className="absolute inset-y-0 right-3 text-xs focus:outline-none flex items-center text-gray-600 mt-8"
+                    className="absolute inset-y-0 right-3 text-xs focus:outline-none flex items-center text-gray-600 mt-8 cursor-pointer"
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? <EyeIcon /> : <EyeOffIcon />}
@@ -111,14 +111,14 @@ const Page = () => {
               <div>
                 <Link
                   href="/forgot-password"
-                  className="text-primary underline"
+                  className="text-primary cursor-pointer underline"
                 >
                   Forgot your password?
                 </Link>
               </div>
               <button
                 type="submit"
-                className="w-full tracking-wide font-bold flex justify-center py-3 px-4 border border-transparent rounded-full text-sm text-white bg-primary focus:outline-none"
+                className="w-full tracking-wide font-bold flex justify-center py-3 px-4 border border-transparent rounded-full cursor-pointer text-sm text-white bg-primary focus:outline-none"
               >
                 Continue
               </button>
@@ -133,7 +133,7 @@ const Page = () => {
                 </div>
               </div>
               <div className="mt-6 flex flex-col gap-3">
-                <button className="w-full gap-2 cursor-pointer flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                <button className="w-full gap-2  flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 cursor-pointer bg-white hover:bg-gray-50">
                   <Image
                     src="/icons/layout/google.svg"
                     alt="google"
@@ -142,7 +142,7 @@ const Page = () => {
                   />
                   <span>Log in with Google</span>
                 </button>
-                <button className="w-full gap-2 cursor-pointer flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                <button className="w-full gap-2 cursor-pointer flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700  bg-white hover:bg-gray-50">
                   <Image
                     src="/icons/layout/facebook.svg"
                     alt="facebook"
@@ -154,11 +154,11 @@ const Page = () => {
               </div>
               <div className="text-sm text-gray-500 mt-4">
                 By continuing, you agree to umazing{" "}
-                <span className="text-primary underline">
+                <span className="text-primary underline cursor-pointer">
                   Conditions of Use
                 </span>{" "}
                 and{" "}
-                <span className="text-primary underline">Privacy Notice</span>
+                <span className="text-primary underline cursor-pointer">Privacy Notice</span>
               </div>
             </div>
           </div>
@@ -174,7 +174,7 @@ const Page = () => {
           </div>
           <Link
             href="/auth/signup"
-            className="flex justify-center py-3 px-4 border border-transparent rounded-full text-sm tracking-wide font-bold text-white bg-primary focus:outline-none"
+            className="flex justify-center py-3 px-4 border border-transparent rounded-full text-sm tracking-wide font-bold cursor-pointer text-white bg-primary focus:outline-none"
           >
             Create your umazing account
           </Link>
