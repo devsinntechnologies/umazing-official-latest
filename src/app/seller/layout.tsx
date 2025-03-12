@@ -1,12 +1,15 @@
-import { ReactNode } from "react";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import Sidebar  from "@/components/seller/Sidebar"
+import SellerHeader from "@/components/seller/SellerHeader"
 
-
-interface RootLayoutProps {
-  children: ReactNode;
-}
-
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-   <div></div>
-  );
+    <SidebarProvider>
+      <Sidebar />
+      <main className="w-full px-8">
+        <SellerHeader/>
+        {children}
+      </main>
+    </SidebarProvider>
+  )
 }
