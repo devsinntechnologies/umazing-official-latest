@@ -7,13 +7,14 @@ import { useGetUserFavouriteQuery, useRemoveFromFavouriteMutation } from "@/hook
 import { useSelector } from "react-redux";
 import withAuth from "@/components/hoc/withAuth";
 import { Skeleton } from "@/components/ui/skeleton"; // ✅ Import Skeleton
+import { toast } from "sonner";
 
 const Page = () => {
   const breadcrumbItems = [{ label: "Favourites" }];
   const userId = useSelector((state: any) => state.authSlice?.user?.id);
   const isLoggedIn = useSelector((state: any) => state.authSlice.isLoggedIn);
   const [triggerFetch, setTriggerFetch] = useState(false);
-  const [wishlist, setWishlist] = useState([]);
+  const [favourite, setFavourite] = useState([]);
 
   useEffect(() => {
     if (userId && isLoggedIn) {
@@ -21,27 +22,44 @@ const Page = () => {
     }
   }, [userId, isLoggedIn]);
 
-  const { data: wishlistItems, isLoading } = useGetUserFavouriteQuery(userId);
+  const { data: favouriteItems, isLoading } = useGetUserFavouriteQuery(userId);
 
-  const [removeFromFavourite] = useRemoveFromFavouriteMutation();
+  const [removeFromFavourite, {isLoading:favouriteRemoving}] = useRemoveFromFavouriteMutation();
 
   useEffect(() => {
-    if (wishlistItems?.data) {
-      setWishlist(wishlistItems.data);
+    if (favouriteItems?.data) {
+      setFavourite(favouriteItems.data);
     }
-  }, [wishlistItems]);
-
-  const handleRemove = (favouriteId: string) => {
-    setWishlist((prevWishlist) => prevWishlist.filter((item) => item.id !== favouriteId));
-    removeFromFavourite(favouriteId);
+  }, [favouriteItems]);
+  
+  const handleRemove = async (favouriteId: string) => {
+    const toastId = toast.loading("Removing from Favourites");
+  
+    try {
+      const result = await removeFromFavourite(favouriteId).unwrap();
+      
+      if (result.success) {
+        setFavourite((prevFavourite) => prevFavourite.filter((item) => item.id !== favouriteId));
+        toast.dismiss(toastId);
+        toast.success("Removed from Favourites");
+      } else {
+        toast.dismiss(toastId);
+        toast.error("Failed to remove from Favourites");
+      }
+    } catch (error) {
+      toast.dismiss(toastId);
+      toast.error("Error removing favourite");
+      console.error("Error removing favourite:", error);
+    }
   };
+  
 
   return (
     <div className="w-full px-15 py-6 space-y-12">
       <Breadcrumbs items={breadcrumbItems} />
       <div className="w-full space-y-12">
         {/* heading and searchbar */}
-        <div className="w-full flex items-center justify-between">
+        <div className="w-full flex md:items-center justify-between flex-col md:flex-row gap-5">
           <div className="flex items-start justify-center gap-1 flex-col">
             <h1 className="text-base sm:text-lg md:text-2xl lg:text-4xl">
               Favourites
@@ -50,11 +68,11 @@ const Page = () => {
               Find your saved items and get ready to order them
             </p>
           </div>
-          <div className="w-60 lg:w-94 h-[50px] flex items-center border-[1.5px] border-border rounded-sm drop-shadow-xs py-2 px-3 text-sm text-black">
+          <div className="w-full md:w-60 lg:w-94 h-[50px] flex items-center border-[1.5px] border-border rounded-sm drop-shadow-xs py-2 px-3 text-sm text-black">
             <input
               type="text"
               placeholder="Search favourites"
-              className="w-full h-full outline-0 border-0 px-2 text-sm !text-black placeholder:text-black"
+              className="w-full h-full outline-0 border-0 px-2 text-xs md:text-sm !text-black placeholder:text-black"
             />
             <button className="rounded rounded-l-none cursor-pointer">
               <Search size={24} />
@@ -70,13 +88,16 @@ const Page = () => {
                   className="w-full h-[250px] sm:h-[300px] lg:h-[386px] bg-gray-200 rounded-sm"
                 />
               ))
-            : wishlist.map((fav, index) => (
+            : favourite.map((fav, index) => (
                 <ProductCard
                   key={fav.id}
                   product={fav.Product}
                   index={index}
-                  setProducts={setWishlist}
-                  products={wishlist}
+                  setProducts={setFavourite}
+                  products={favourite}
+                  isFavoritePage
+                  handleFavRemove={handleRemove}
+                  favouriteId={fav.id}
                 />
               ))}
         </div>

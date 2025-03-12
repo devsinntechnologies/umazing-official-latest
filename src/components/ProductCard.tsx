@@ -5,7 +5,7 @@ import { Trash2, Heart, Loader2, ShoppingCart, Star } from "lucide-react";
 import { toast } from "sonner";
 import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 import { useSelector } from "react-redux";
 import { usePathname, useRouter } from "next/navigation";
 import Stars from "./Stars";
@@ -17,17 +17,30 @@ import {
 import { useAddToCartMutation, useGetUserCartQuery } from "@/hooks/UseCart";
 
 interface ProductCardProps {
+  className?: string;
   isTrending?: boolean;
   isDiscount?: boolean;
   product: any;
   index: number;
   setProducts: React.Dispatch<React.SetStateAction<any[]>>;
   products: any[];
-  className?: string;
-  
+  favouriteId?: string
+  isFavoritePage?: boolean;
+  handleFavRemove?: (id:string)=> void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ className, isTrending, isDiscount, product, index, setProducts, products }) => { 
+const ProductCard: React.FC<ProductCardProps> = ({
+  className,
+  isTrending,
+  isDiscount,
+  product,
+  index,
+  setProducts,
+  products,
+  isFavoritePage,
+  handleFavRemove,
+  favouriteId
+}) => {
   const userId = useSelector((state: any) => state.authSlice?.user?.id);
   const isLoggedIn = useSelector((state: any) => state.authSlice.isLoggedIn);
   const pathname = usePathname();
@@ -174,21 +187,29 @@ const ProductCard: React.FC<ProductCardProps> = ({ className, isTrending, isDisc
         </div>
       </Link>
       <div className="absolute top-2 right-2 flex items-center">
-        {!isSeller && (
-          <button
-            className="p-2 rounded-full bg-gray-200 size-10"
-            onClick={product.isFavorite ? handleRemove : handleAddToFavorites}
-          >
-            {/* Show loader while adding/removing */}
-            {addingToFav || removingFromFav ? (
-              <Loader2 size={20} className="animate-spin text-black" />
-            ) : product.isFavorite ? (
-              <Heart size={20} color="red" fill="red" className="size-6" />
-            ) : (
-              <Heart size={20} className="size-6 text-black font-light" />
-            )}
-          </button>
-        )}
+        {!isSeller &&
+          (isFavoritePage ? (
+            <button
+              className="absolute top-2 right-2 p-2 bg-destructive text-white rounded-full cursor-pointer"
+              onClick={() => handleFavRemove(favouriteId)}
+            >
+              <Trash2 size={20} />
+            </button>
+          ) : (
+            <button
+              className="p-2 rounded-full bg-gray-200 size-10"
+              onClick={product.isFavorite ? handleRemove : handleAddToFavorites}
+            >
+              {/* Show loader while adding/removing */}
+              {addingToFav || removingFromFav ? (
+                <Loader2 size={20} className="animate-spin text-black size-6" />
+              ) : product.isFavorite ? (
+                <Heart size={20} color="red" fill="red" className="size-6" />
+              ) : (
+                <Heart size={20} className="size-6 text-black font-light" />
+              )}
+            </button>
+          ))}
       </div>
       {isTrending && (
         <p className="absolute top-4 left-4 rounded-full px-2 py-1 text-[10px] tracking-wider bg-destructive text-white font-semibold shadow-lg">

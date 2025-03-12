@@ -61,8 +61,8 @@ const Auth = () => {
         </Link>
       ) : (
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <span className="size-9 rounded-full flex items-center justify-center bg-ring cursor-pointer">
+          <DropdownMenuTrigger asChild suppressHydrationWarning={true}>
+            <span className="size-9 rounded-full flex items-center justify-center bg-ring cursor-pointer" suppressHydrationWarning={true}>
               <Image
                 src="/icons/layout/header/user.svg"
                 alt=""
