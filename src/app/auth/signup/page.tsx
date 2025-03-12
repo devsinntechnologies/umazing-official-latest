@@ -89,7 +89,7 @@ const Page = () => {
               <Image
                 src="/umazingLogo.svg"
                 alt="logo"
-                className="w-40 md:w-52"
+                className="w-40 md:w-52 cursor-pointer"
                 width={200}
                 height={100}
               />

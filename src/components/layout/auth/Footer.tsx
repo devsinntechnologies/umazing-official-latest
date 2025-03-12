@@ -18,7 +18,7 @@ const Footer = () => {
               </li>
               <div>|</div>
               <li>
-                <a href="#" className="text-primary underline">
+                <a href="/terms-and-conditions" className="text-primary underline">
                   Terms and Conditions
                 </a>
               </li>

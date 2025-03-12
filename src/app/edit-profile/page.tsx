@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import withAuth from "@/components/hoc/withAuth";
 import Account from '@/components/profile/Account';
 import Security from '@/components/profile/Security';
 
@@ -14,7 +15,7 @@ const EditProfile = () => {
       <div className="flex justify-center mb-8 mx-auto">
         <div className="inline-flex bg-white border rounded-lg p-1">
           <button
-            className={`py-2 lg:px-24 md:px-16 px-6  text-sm font-medium rounded-md transition-all ${
+            className={`py-2 lg:px-24 md:px-16 px-6 cursor-pointer text-sm font-medium rounded-md transition-all ${
               activeTab === 'account'
                 ? 'bg-[hsl(48,96%,89%)] text-primary shadow'
                 : 'text-gray-500 hover:text-gray-700'
@@ -24,7 +25,7 @@ const EditProfile = () => {
             Account
           </button>
           <button
-            className={`py-2 lg:px-24 md:px-20 sm:px-16 px-3 text-sm font-medium rounded-md transition-all ${
+            className={`py-2 lg:px-24 md:px-20 cursor-pointer sm:px-16 px-3 text-sm font-medium rounded-md transition-all ${
               activeTab === 'security'
                 ? 'bg-[hsl(48,96%,89%)] text-primary shadow'
                 : 'text-gray-500 hover:text-gray-700'
@@ -43,4 +44,4 @@ const EditProfile = () => {
   );
 };
 
-export default EditProfile;
+export default withAuth(EditProfile);

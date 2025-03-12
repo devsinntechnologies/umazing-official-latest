@@ -77,7 +77,7 @@ const Security = () => {
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-12 text-gray-500"
+              className="absolute right-3 cursor-pointer top-12 text-gray-500"
             >
               {showPassword ? <EyeIcon size={20} /> : <EyeOffIcon size={20} />}
             </button>
