@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image";
 import React from "react";
 
 const reviews = [
@@ -38,10 +39,12 @@ const ReviewCard = ({ review }) => {
   return (
     <div className="flex items-center border p-8 rounded-lg shadow-md w-full  mb-4">
      <div className="w-[10%] items-end">
-     <img
+     <Image
         src={review.avatar}
         alt={review.name}
         className="w-16 h-16 rounded-full mx-auto"
+        width={64}
+        height={64}
       />
      </div>
         <div className="flex flex-col justify-between items-start w-[25%] ">
