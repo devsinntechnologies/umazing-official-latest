@@ -35,7 +35,7 @@ const Gallery = ({ data }) => {
   const direction = !isDesktop ? "horizontal" : "vertical";
 
   return (
-    <div className="w-full h-full flex flex-row-reverse">
+    <div className={`w-full h-full flex ${isDesktop ? "flex-row-reverse" : "flex-col gap-3"}`}>
       {/* Main Image Slider */}
       <Swiper
         loop={true}
@@ -67,22 +67,22 @@ const Gallery = ({ data }) => {
 
       {/* Thumbnails */}
       <div
-        className={`px-4 ${
+        className={`px-0 md:px-4 ${
           images.length > 5 ? "overflow-y-auto" : "flex md:flex-col justify-center"
-        } w-full md:w-[112px] max-h-full`}
+        } w-full md:w-[112px] h-23 md:h-auto max-h-full`}
       >
         <Swiper
           onSwiper={setThumbsSwiper}
           loop={false}
           spaceBetween={10}
-          slidesPerView={isDesktop ? 5 : 3} // Show fewer thumbnails on mobile
-          direction={direction} // Apply dynamic direction
+          slidesPerView={5}
+          direction={direction}
           watchSlidesProgress={true}
           modules={[Navigation, Thumbs]}
-          className="w-full h-full py-4 px-3"
+          className="w-full h-full px-1 py-2 md:px-3 md:py-4"
         >
           {images?.map((image, index) => (
-            <SwiperSlide key={index} className={`w-full rounded-md !h-[100px] lg:!h-[130px] !flex !justify-center !items-center border ${activeIndex === index ? "border-primary" : "border-border"} hover:border-primary/50`}>
+            <SwiperSlide key={index} className={`!w-20 md:w-full rounded-md h-22 md:!h-[100px] lg:!h-[130px] !flex !justify-center !items-center border ${activeIndex === index ? "border-primary" : "border-border"} hover:border-primary/50`}>
               <Image
                 width={100}
                 height={100}

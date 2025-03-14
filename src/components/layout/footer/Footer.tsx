@@ -12,16 +12,16 @@ const Footer = () => {
     setCurrentYear(new Date().getFullYear());
   }, []);
   return (
-    <div className="w-full bg-[#232323] pb-10 pt-20 px-15">
+    <div className="w-full bg-[#232323] px-5 sm:px-6 py-8 md:pb-10 md:pt-20 md:px-10 lg:px-15">
       {/* logo, links */}
-      <div className="w-full flex items-center justify-center flex-col gap-6">
+      <div className="w-full flex items-start md:items-center justify-center flex-col gap-6">
         <Link href="/">
           <Image
             src="/logo.svg"
             alt="Umazing-official"
             width={100}
             height={40}
-            className="w-[98px]"
+            className="w-42 md:w-[98px]"
           />
         </Link>
         {/* social links */}
@@ -131,13 +131,13 @@ const Footer = () => {
             Sign up for exclusive updates, new arrivals & insider only discounts
           </p>
           {/* input with button */}
-          <form className="w-full bg-white rounded flex items-center drop-shadow-sm overflow-hidden my-3">
+          <form className="w-full h-12 bg-white rounded flex items-center drop-shadow-sm overflow-hidden my-3">
             <input
               type="text"
               placeholder="Email"
               className="w-full h-full outline-0 border-0 px-4 text-sm !text-black"
             />
-            <Button className="rounded rounded-l-none">
+            <Button className="h-full rounded rounded-l-none">
               <SendHorizonal size={24} />
             </Button>
           </form>
@@ -145,9 +145,9 @@ const Footer = () => {
       </div>
       <hr className="w-full  bg-white"/>
       {/* copyright and payment methods */}
-      <div className="w-full flex items-center justify-between text-white mt-10 text-center">
+      <div className="w-full flex items-start md:items-center justify-between flex-col-reverse md:flex-row text-white mt-5 md:mt-10 text-center gap-6">
         <p>&copy; {currentYear}, Umazing. All rights reserved.</p>
-        <div className="flex items-center justify-center gap-6 mt-4">
+        <div className="flex items-center justify-start md:justify-center gap-6 mt-2">
           {[
             { src: "/icons/layout/footer/visa.svg", alt: "Visa" },
             { src: "/icons/layout/footer/applePay.svg", alt: "Apple Pay" },
@@ -160,7 +160,7 @@ const Footer = () => {
               alt={alt}
               width={40}
               height={24}
-              className="w-12"
+              className="w-11 md:w-12"
             />
           ))}
         </div>

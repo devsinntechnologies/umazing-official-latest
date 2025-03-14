@@ -170,7 +170,7 @@ const Reviews = ({ product, review, refetch }) => {
                   Write a Customer review
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-[425px] !px-0">
+              <DialogContent className="sm:max-w-[425px] !px-0 md:py-10">
                 <DialogHeader>
                   <DialogTitle className="text-xl text-center">
                     Write a Review
@@ -204,13 +204,11 @@ const Reviews = ({ product, review, refetch }) => {
                     />
                   </div>
                   {/* Image upload */}
-                  <div className="grid gap-4 w-full">
-                    {/* Upload Label */}
+                  {/* <div className="grid gap-4 w-full">
                     <Label className="font-medium text-gray-700">
                       Upload Images (Max 3)
                     </Label>
 
-                    {/* Upload Box */}
                     <label
                       htmlFor="image-upload"
                       className="cursor-pointer flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg p-6 bg-gray-100 hover:bg-gray-200 transition-colors"
@@ -229,7 +227,6 @@ const Reviews = ({ product, review, refetch }) => {
                       />
                     </label>
 
-                    {/* Image Previews */}
                     {selectedImages.length > 0 && (
                       <div className="grid grid-cols-3 gap-2">
                         {selectedImages.map((image, index) => (
@@ -251,7 +248,7 @@ const Reviews = ({ product, review, refetch }) => {
                         ))}
                       </div>
                     )}
-                  </div>
+                  </div> */}
                 </div>
                 <DialogFooter>
                   <div className="w-full px-4 flex items-center justify-end gap-3">

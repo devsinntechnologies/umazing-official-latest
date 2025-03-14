@@ -256,7 +256,7 @@ const Page = () => {
               <div className="w-full lg:w-[50%] h-full space-y-6 lg:space-y-8">
                 {/* name and category */}
                 <div className="w-full space-y-1">
-                  <h1 className="text-black text-lg md:text-2xl lg:text-4xl font-semibold">
+                  <h1 className="text-black text-2xl lg:text-4xl font-semibold">
                     {product?.name}
                   </h1>
                   <p className="text-base text-secondary">
@@ -289,7 +289,7 @@ const Page = () => {
 
                 {/* quantity */}
                 <div className="w-full">
-                  <div className="h-[50px] w-[25%] border border-[#E6E6E6] p-[8px] rounded-[170px] flex gap-2 lg:gap-0 items-center justify-between py-2">
+                  <div className="h-[50px] w-1/2 md:w-[30%] border border-[#E6E6E6] p-2 rounded-[170px] flex gap-2 lg:gap-0 items-center justify-between py-2">
                     <button
                       className="w-[34px] h-[34px] bg-[#F2F2F2] rounded-full flex justify-center items-center"
                       onClick={handleDecrement}
