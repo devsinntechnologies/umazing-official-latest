@@ -135,7 +135,7 @@
   }
 
   /* For min max price in filter bar in search page */
-  
+
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
