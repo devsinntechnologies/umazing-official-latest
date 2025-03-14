@@ -80,7 +80,7 @@ const Page = () => {
           </div>
         </div>
         {/* favourite products */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-7">
+        <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2 md:gap-7">
           {isLoading
             ? Array.from({ length: 10 }).map((_, index) => (
                 <Skeleton

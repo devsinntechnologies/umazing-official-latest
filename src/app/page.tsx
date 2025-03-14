@@ -8,10 +8,10 @@ import React from "react";
 
 const Page = () => {
   return (
-    <div className="w-full space-y-20">
+    <div className="w-full space-y-10 md:space-y-14 lg:space-y-20">
       {/* offers */}
       <OffersBanner />
-      <div className="space-y-20 px-6 sm:px-10 md:px-15 py-5">
+      <div className="space-y-10 md:space-y-14 lg:space-y-20 px-6 sm:px-10 md:px-15 py-5">
          {/* Flash Deals products */}
          <FeaturedRecommendations />
          {/* Flash Deals products */}

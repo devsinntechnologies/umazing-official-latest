@@ -29,16 +29,16 @@ const FeaturedRecommendations = () => {
 
   return (
     <div className="space-y-6 md:space-y-10">
-      <div className="w-full flex items-center justify-between">
+      <div className="w-full flex items-center justify-center md:justify-between">
         <div className="hidden md:block md:w-40" />
-        <h1 className="text-lg sm:text-xl md:text-3xl lg:text-5xl text-center font-bold">
+        <h1 className="text-xl md:text-3xl lg:text-5xl text-center font-bold">
           Featured Recommendations
         </h1>
-        <Link href="/products">
+        <Link href="/products" className="hidden md:block">
           <Button variant="link">View All</Button>
         </Link>
       </div>
-      <div className="relative w-full px-18">
+      <div className="relative h-fit w-full sm:px-12 md:px-18 md:space-y-0 space-y-5">
         <Swiper
           spaceBetween={24}
           breakpoints={{
@@ -71,18 +71,19 @@ const FeaturedRecommendations = () => {
                     index={index}
                     setProducts={setProducts}
                     products={products}
-                    className=""
+                    imageClassName="h-[230px]"
                   />
                 </SwiperSlide>
               ))}
         </Swiper>
         {/* Custom Navigation Buttons */}
-        <Button className="swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 size-12">
+        <Button className="swiper-button-prev relative sm:absolute left-[30%] sm:left-0 top-1/2 sm:-translate-y-1/2 z-10 size-12">
           <ArrowLeft className="size-6" />
         </Button>
-        <Button className="swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 size-12">
+        <Button className="swiper-button-next relative sm:absolute -right-[40%] sm:right-0 top-1/2 sm:-translate-y-1/2 z-10 size-12">
           <ArrowRight className="size-6" />
         </Button>
+
       </div>
     </div>
   );

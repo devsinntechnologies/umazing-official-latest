@@ -317,7 +317,7 @@ const Page = () => {
                   {/* seller Details */}
                   <div className="w-full space-y-1">
                     <h1 className="text-base md:text-lg lg:text-xl font-bold">Seller Details</h1>
-                    <p className="text-xs md:text-sm">Sold by: {product?.UserId}</p>
+                    <p className="text-xs md:text-sm">Sold by: {product?.User.name}</p>
                   </div>
                 </div>
 

@@ -43,7 +43,7 @@ const Gallery = ({ data }) => {
         spaceBetween={10}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[Navigation, Thumbs]}
-        className="w-full flex-1 h-[542px] lg:h-[690px] bg-[#E5E7EB] rounded-md flex items-center justify-center overflow-hidden border border-border shadow-md p-2"
+        className="w-full flex-1 h-fit md:h-[542px] lg:h-[690px] bg-[#E5E7EB] rounded-md flex items-center justify-center overflow-hidden border border-border shadow-md p-2"
         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)} // Update active index
       >
         {isImageLoading && (
@@ -52,7 +52,7 @@ const Gallery = ({ data }) => {
           </div>
         )}
         {images?.map((image, index) => (
-          <SwiperSlide key={index} className='!flex items-center justify-center w-full h-full p-4'>
+          <SwiperSlide key={index} className='!flex items-center justify-center w-full !h-[542px] md:h-full p-4'>
             <Image
               width={400}
               height={300}
@@ -86,7 +86,7 @@ const Gallery = ({ data }) => {
               <Image
                 width={100}
                 height={100}
-                className={`w-full rounded-md object-cover cursor-pointer`}
+                className={`w-full rounded-md object-cover cursor-pointer h-[94%]`}
                 src={`http://97.74.89.204/${image.imageUrl}`}
                 alt={`Thumbnail ${index}`}
                 onClick={() => thumbsSwiper?.slideTo(index)} // Set main image when thumbnail clicked
