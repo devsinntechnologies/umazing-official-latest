@@ -3,14 +3,17 @@ import Link from "next/link";
 import React from "react";
 import Auth from "./Auth";
 import { usePathname } from "next/navigation";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 
 const Header = () => {
+  const isLoggedIn = useSelector((state: RootState) => state.authSlice.isLoggedIn);
   const pathname = usePathname();
 
   return (
-    <header className="w-full">
+    <header className="w-full" suppressHydrationWarning>
       {/* top bar for sale */}
-      <div className="w-full bg-[#262626] overflow-x-scroll whitespace-nowrap py-3">
+      <div className="w-full bg-[#262626] overflow-x-scroll whitespace-nowrap py-3 no-scrollbar">
         <div className="flex items-center gap-24 px-4">
           {[
             {
@@ -60,7 +63,7 @@ const Header = () => {
         </Link>
         </div>
         {/* navlinks */}
-        <ul className="flex items-center justify-center gap-6">
+        <ul className="hidden md:flex items-center justify-center gap-6">
           {[
             { href: "/", label: "Home" },
             { href: "/products", label: "Products" },
@@ -82,7 +85,7 @@ const Header = () => {
           ))}
         </ul>
         {/* authlink */}
-        <div className="flex items-center justify-center gap-5 xl:gap-8">
+        <div className={`flex items-center justify-center ${isLoggedIn ? "gap-3 xl:gap-4": "gap-5 xl:gap-8"}`} suppressHydrationWarning>
           <div className="flex items-center justify-center gap-3 xl:gap-4">
             {[
               {

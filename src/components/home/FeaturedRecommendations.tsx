@@ -43,7 +43,9 @@ const FeaturedRecommendations = () => {
           spaceBetween={24}
           breakpoints={{
             1320: { slidesPerView: 4 },
-            0: { slidesPerView: "auto" },
+            1024: { slidesPerView: 3 },
+            592: { slidesPerView: 2 },
+            0: { slidesPerView: 1 },
           }}
           loop={true}
           navigation={{
@@ -57,7 +59,7 @@ const FeaturedRecommendations = () => {
           {isLoading
             ? Array.from({ length: 4 }).map((_, index) => (
                 <SwiperSlide key={index}>
-                  <Skeleton className="w-full h-[250px] sm:h-[300px] lg:h-[386px] bg-gray-200 rounded-sm" />
+                  <Skeleton className="w-full h-[250px] sm:h-[300px] lg:h-[386px]" />
                 </SwiperSlide>
               ))
             : products.map((product, index) => (
@@ -69,7 +71,7 @@ const FeaturedRecommendations = () => {
                     index={index}
                     setProducts={setProducts}
                     products={products}
-                    className="w-[275px] px-"
+                    className=""
                   />
                 </SwiperSlide>
               ))}

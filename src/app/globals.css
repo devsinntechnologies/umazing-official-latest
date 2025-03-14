@@ -133,6 +133,22 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  /* For min max price in filter bar in search page */
+  
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
 }
 
 /* Add these styles to match your input fields */
@@ -152,3 +168,15 @@
   font-size: inherit !important;
   line-height: inherit !important;
 }
+
+ /* no scrollbar  */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+

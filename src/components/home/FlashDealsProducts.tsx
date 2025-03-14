@@ -48,7 +48,7 @@ const FlashDealsProducts = () => {
           ? Array.from({ length: 10 }).map((_, index) => (
               <Skeleton
                 key={index}
-                className="w-full h-[250px] sm:h-[300px] lg:h-[386px] bg-gray-200 rounded-sm"
+                className="w-full h-[250px] sm:h-[300px] lg:h-[386px]"
               />
             ))
           : products.map((product, index) => (

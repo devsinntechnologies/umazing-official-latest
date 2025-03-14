@@ -18,7 +18,7 @@ const FeaturedProducts = () => {
   } = useGetAllProductsQuery({
     pageNo,
     pageSize,
-    skip: true
+    skip: true,
   });
 
   useEffect(() => {
@@ -34,21 +34,19 @@ const FeaturedProducts = () => {
       <div className="w-full flex items-center justify-between">
         {/* empty div for alignments */}
         <div className="hidden md:block md:w-40" />
-      <h1 className="text-lg sm:text-xl md:text-3xl lg:text-5xl text-center font-bold">
-        Flash deals upto 60% off
-      </h1>
-      <Link href='/products'>
-      <Button variant="link">
-        View All
-      </Button>
-      </Link>
+        <h1 className="text-lg sm:text-xl md:text-3xl lg:text-5xl text-center font-bold">
+          Flash deals upto 60% off
+        </h1>
+        <Link href="/products">
+          <Button variant="link">View All</Button>
+        </Link>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-7">
-      {isLoading
+        {isLoading
           ? Array.from({ length: 10 }).map((_, index) => (
               <Skeleton
                 key={index}
-                className="w-full h-[250px] sm:h-[300px] lg:h-[386px] bg-gray-200 rounded-sm"
+                className="w-full h-[250px] sm:h-[300px] lg:h-[386px]"
               />
             ))
           : products.map((product, index) => (

@@ -20,13 +20,14 @@ export const categories = createApi({
     getCategoriesV2: builder.query({
       query: () => "/v2/getAllCategories",
     }),
-    // getProductById: builder.query({
-    //   query: (id) => `getById/${id}`,
-    // }),
+    getCategoryById: builder.query({
+      query: (id) => `getCategoryById/${id}`,
+    }),
   }),
 });
 
 export const { 
   useGetCategoriesQuery,
-  useGetCategoriesV2Query
+  useGetCategoriesV2Query,
+  useGetCategoryByIdQuery
  } = categories;

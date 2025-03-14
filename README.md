@@ -25,6 +25,11 @@ Then, open [http://localhost:3000](http://localhost:3000) in your browser.
 - Use **PascalCase** for `.tsx` component files.
 - Use **kebab-case** for route names (e.g., `forgot-password`).
 
+## Project Info:
+**Two Product Cards**: Main and Filter
+### Hydration Issues:
+**Cause Component:** /ui/dropdown-menu.tsx
+
 ## Development
 Run the development server:
 
@@ -41,4 +46,3 @@ Deploy easily using [Vercel](https://vercel.com).
 
 ---
 For more details, visit the official [Next.js Documentation](https://nextjs.org/docs).
-
