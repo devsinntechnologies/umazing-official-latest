@@ -15,14 +15,16 @@ import {
 } from "@/components/ui/select";
 import Searchbar from "./Searchbar";
 import { useGetCategoryByIdQuery } from "@/hooks/UseCategories";
+import { useMediaQuery } from "@/hooks/UseMediaQuery";
 
 const FilteredProducts = () => {
-  const [triggerFetch, setTriggerFetch] = useState(false);
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+  // const [triggerFetch, setTriggerFetch] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
   const [products, setProducts] = useState([]);
   const [pageNo, setPageNo] = useState<number>(1);
-  const pageSize = 20;
+  const pageSize = 10;
   const [totalPages, setTotalPages] = useState<number>(1);
   const [priceSort, setPriceSort] = useState<string>("");
 
@@ -124,7 +126,7 @@ const FilteredProducts = () => {
   return (
     <div className="w-full space-y-8">
       <div className="w-full flex md:items-center justify-between flex-col md:flex-row gap-5">
-        <Searchbar />
+        {isDesktop && <Searchbar />}
         <div className="flex items-center gap-2">
           <p className="hidden md:block text-sm">Sort by: </p>
           <Select
@@ -169,7 +171,9 @@ const FilteredProducts = () => {
         {/* Total Results */}
         <div className="w-fit">
           <p className="text-[#5F6C72]">
-            <span className="font-semibold text-black">{productsData ? products.length : "_"}</span>{" "}
+            <span className="font-semibold text-black">
+              {productsData ? products.length : "_"}
+            </span>{" "}
             Results found.
           </p>
         </div>

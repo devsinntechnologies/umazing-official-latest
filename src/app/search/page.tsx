@@ -12,7 +12,7 @@ const Page = () => {
       <Breadcrumbs items={breadcrumbItems} />
       <div className="w-full flex items-start justify-between gap-4">
         {/* sidebar */}
-        <div className="w-[300px] h-full max-h-[1080px] sticky">
+        <div className="hidden md:block w-[300px] h-full max-h-[1080px] sticky">
           <FilterBar />
         </div>
         {/* filtered products  */}

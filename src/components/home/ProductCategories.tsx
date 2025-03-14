@@ -34,15 +34,17 @@ const ProductCategories = () => {
 
   return (
     <div className="space-y-6 md:space-y-10">
-      <div className="w-full flex items-center justify-between">
+      <div className="w-full flex items-center justify-center md:justify-between">
         {/* empty div for alignments */}
         <div className="hidden md:block md:w-40" />
-        <h1 className="text-lg sm:text-xl md:text-3xl lg:text-5xl text-center font-bold">
+        <h1 className="text-xl md:text-3xl lg:text-5xl text-center font-bold">
           Product Categories
         </h1>
-        <Link href="/categories">
-          <Button variant="link">View All</Button>
-        </Link>
+        <Link href='/categories' className="hidden md:block">
+      <Button variant="link">
+        View All
+      </Button>
+      </Link>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-rows-6 gap-5">
         {isLoading
@@ -83,6 +85,11 @@ const ProductCategories = () => {
               </div>
             ))}
       </div>
+      <Link href='/categories' className="md:hidden block">
+      <Button variant="link">
+        View All
+      </Button>
+      </Link>
     </div>
   );
 };

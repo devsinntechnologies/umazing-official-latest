@@ -57,7 +57,7 @@ const Auth = () => {
     <div>
       {!isLoggedIn ? (
         <Link href="/auth/login">
-          <Button variant="default">Login</Button>
+          <Button variant="default" className="px-4 md:px-8 text-sm md:text-base">Login</Button>
         </Link>
       ) : (
         <DropdownMenu>
