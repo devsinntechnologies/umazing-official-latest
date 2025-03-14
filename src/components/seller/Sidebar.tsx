@@ -22,7 +22,7 @@ const items = [
   },
   {
     title: "Product Listings",
-    url: "/seller/productListings",
+    url: "/seller/product-listings",
     icon: Box ,
   },
   {
@@ -37,12 +37,12 @@ const items = [
   },
   {
     title: "Analytics & Reports",
-    url: "/seller/analytics&Reports",
+    url: "/seller/analytics-&-reports",
     icon: ChartColumnDecreasing ,
   },
   {
     title: "Stock Management",
-    url: "/seller/stockManagement",
+    url: "/seller/stock-management",
     icon: Layers,
   },
 ]

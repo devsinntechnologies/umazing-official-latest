@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const SellerHeader: React.FC  = () => {
   return (
-    <div className='w-full items-center justify-between  h-20 flex '>
+    <div className='w-full items-center justify-between  h-24 flex '>
 
 <div className="relative w-full max-w-md">
       <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={20} />

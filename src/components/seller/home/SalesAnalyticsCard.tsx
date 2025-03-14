@@ -21,14 +21,14 @@ const salesData: SalesData[] = [
     icon: TrendingUp,
   },
   {
-    title: 'Net Revenue',
+    title: 'Total Profit',
     amount: '$320,500',
     percentage: '+3.2%',
     description: 'Net revenue grew by 3.2% from last month',
     icon: DollarSign,
   },
   {
-    title: 'New Customers',
+    title: 'Total Orders',
     amount: '1,245',
     percentage: '+8.1%',
     description: 'Gained 8.1% more customers this month',
