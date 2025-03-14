@@ -5,7 +5,7 @@ import { Trash2, Heart, Loader2, ShoppingCart, Star } from "lucide-react";
 import { toast } from "sonner";
 import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 import { useSelector } from "react-redux";
 import { usePathname, useRouter } from "next/navigation";
 import Stars from "./Stars";
@@ -16,25 +16,36 @@ import {
 } from "@/hooks/UseFavourite";
 import { useAddToCartMutation, useGetUserCartQuery } from "@/hooks/UseCart";
 
-const ProductCard = ({
+interface ProductCardProps {
+  className?: string;
+  isTrending?: boolean;
+  isDiscount?: boolean;
+  product: any;
+  index: number;
+  setProducts: React.Dispatch<React.SetStateAction<any[]>>;
+  products: any[];
+  favouriteId?: string
+  isFavoritePage?: boolean;
+  handleFavRemove?: (id:string)=> void;
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({
+  className,
   isTrending,
   isDiscount,
   product,
   index,
   setProducts,
   products,
-  className
+  isFavoritePage,
+  handleFavRemove,
+  favouriteId
 }) => {
   const userId = useSelector((state: any) => state.authSlice?.user?.id);
   const isLoggedIn = useSelector((state: any) => state.authSlice.isLoggedIn);
   const pathname = usePathname();
   const router = useRouter();
-  const quantity = 1;
 
-  const [
-    addToCart,
-    { isSuccess: cartSuccess, isLoading: addingToCart, isError: cartError },
-  ] = useAddToCartMutation();
   const [
     addToFavourite,
     { isSuccess: addSuccess, isLoading: addingToFav, isError: addError },
@@ -68,30 +79,7 @@ const ProductCard = ({
         return updatedProducts;
       });
     }
-    if (cartSuccess) {
-      toast.success("Added to Cart");
-    }
-  }, [isLoggedIn, index, setProducts, product.isFavorite, cartSuccess]);
-
-  // Add to cart functionality
-  const handleAddToCart = async () => {
-    if (!isLoggedIn) {
-      toast.error("Not Logged In", {
-        action: {
-          label: "Login",
-          onClick: () => router.push("/auth/login"),
-        },
-      });
-      return;
-    }
-    toast("Processing", {
-      description: "Updating your cart...",
-    });
-
-    try {
-      await addToCart({ ProductId: product.id, quantity });
-    } catch (error) {}
-  };
+  }, [isLoggedIn, index, product.isFavorite, setProducts]);
 
   // Add to favorites
   const handleAddToFavorites = async () => {
@@ -199,21 +187,29 @@ const ProductCard = ({
         </div>
       </Link>
       <div className="absolute top-2 right-2 flex items-center">
-        {!isSeller && (
-          <button
-            className="p-2 rounded-full bg-gray-200 size-10"
-            onClick={product.isFavorite ? handleRemove : handleAddToFavorites}
-          >
-            {/* Show loader while adding/removing */}
-            {addingToFav || removingFromFav ? (
-              <Loader2 size={20} className="animate-spin text-black" />
-            ) : product.isFavorite ? (
-              <Heart size={20} color="red" fill="red" className="size-6" />
-            ) : (
-              <Heart size={20} className="size-6 text-black font-light" />
-            )}
-          </button>
-        )}
+        {!isSeller &&
+          (isFavoritePage ? (
+            <button
+              className="absolute top-2 right-2 p-2 bg-destructive text-white rounded-full cursor-pointer"
+              onClick={() => handleFavRemove(favouriteId)}
+            >
+              <Trash2 size={20} />
+            </button>
+          ) : (
+            <button
+              className="p-2 rounded-full bg-gray-200 size-10"
+              onClick={product.isFavorite ? handleRemove : handleAddToFavorites}
+            >
+              {/* Show loader while adding/removing */}
+              {addingToFav || removingFromFav ? (
+                <Loader2 size={20} className="animate-spin text-black size-6" />
+              ) : product.isFavorite ? (
+                <Heart size={20} color="red" fill="red" className="size-6" />
+              ) : (
+                <Heart size={20} className="size-6 text-black font-light" />
+              )}
+            </button>
+          ))}
       </div>
       {isTrending && (
         <p className="absolute top-4 left-4 rounded-full px-2 py-1 text-[10px] tracking-wider bg-destructive text-white font-semibold shadow-lg">

@@ -11,12 +11,12 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 const inter = Inter({ subsets: ["latin"] });
 // const urbanist = Urbanist({ subsets: ["latin"] });
 
-// const poppins = Poppins({
-//   subsets: ["latin"],
-//   display: "swap",
-//   variable: "--font-poppins",
-//   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-// });
+const poppins = Poppins({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-poppins",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 export const metadata = {
   title: "Umazing Official",
@@ -34,7 +34,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <title>Umazing Official</title>
         {/* <link rel="icon" type="image/svg+xml" href="/icon.svg" /> */}
       </head>
-      <body className={`${inter.className} w-screen min-h-screen`} suppressHydrationWarning>
+      <body className={`${poppins.className} w-screen min-h-screen`} suppressHydrationWarning>
         <Provider>
         <ThemeProvider
             attribute="class"
@@ -45,7 +45,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
           <Child>{children}</Child>
           </ThemeProvider>
-          <Toaster expand={false} position="top-right" richColors closeButton/>
+          <Toaster expand={false} position="bottom-right" richColors closeButton/>
         </Provider>
       </body>
     </html>
