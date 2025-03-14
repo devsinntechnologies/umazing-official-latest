@@ -20,8 +20,8 @@ const Page = () => {
             </h2>
             <p className="text-gray-600 mb-6 leading-6">
               Have questions or need assistance? Our team is always ready to
-              help! Whether you're looking for the best shopping deals, need
-              support, or want to collaborate, we're just a message away.
+              help! Whether you&apos;re looking for the best shopping deals, need
+              support, or want to collaborate, we&apos;re just a message away.
             </p>
             <ul className="flex flex-col gap-8 lg:py-10 py-6">
               <li className="flex items-center gap-4">
