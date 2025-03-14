@@ -1,6 +1,11 @@
+import { cn } from '@/lib/utils';
 import { Star } from 'lucide-react'
 
-const Stars = ({rating}: {rating: number}) => {
+interface starsProps {
+  rating: number;
+  className?: string;
+}
+const Stars:React.FC<starsProps> = ({rating, className}) => {
   return (
     <div className="flex items-center gap-1">
       {Array.from({length: 5}).map((_, index) => {
@@ -13,7 +18,7 @@ const Stars = ({rating}: {rating: number}) => {
             key={index} 
             color="#FBBF24"
             fill={isFullStar ? "#FBBF24" : isPartialStar ? `url(#partial-fill-${Math.round(partialFill * 100)})` : "none"} 
-            className='size-3 md:size-4'
+            className={cn("size-3 md:size-4", className)}
           >
             {/* Add definition for partial-fill gradients */}
             {index === 0 && (
