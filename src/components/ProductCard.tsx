@@ -114,7 +114,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   // Remove from favorites
-  const handleRemove = async () => {
+  const handleRemoveFromFavourites = async () => {
     if (!isLoggedIn) {
       toast.error("Not Logged In", {
         action: {
@@ -151,7 +151,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         className
       )}
     >
-      <Link href={`/details/${product.id}`} className="w-full flex flex-col">
+      <Link href={`/products/${product.id}`} className="w-full flex flex-col">
         <div className="bg-[#FAFAFA]">
           <Image
             className="w-full h-[140px] md:h-[180px] lg:h-[200px] xl:h-[230px] object-cover"
@@ -198,7 +198,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           ) : (
             <button
               className="p-2 rounded-full bg-gray-200 size-10"
-              onClick={product.isFavorite ? handleRemove : handleAddToFavorites}
+              onClick={product.isFavorite ? handleRemoveFromFavourites : handleAddToFavorites}
             >
               {/* Show loader while adding/removing */}
               {addingToFav || removingFromFav ? (

@@ -37,7 +37,7 @@ const FilterProductCard: React.FC<FilterProductCardProps> = ({
         className
       )}
     >
-      <Link href={`/details/${product.id}`} className="w-full flex flex-col">
+      <Link href={`/products/${product.id}`} className="w-full flex flex-col">
         <div className="bg-[#FAFAFA]">
           <Image
             className="w-full h-[130px] md:h-[160px] lg:h-[180px] xl:h-[200px] object-cover"

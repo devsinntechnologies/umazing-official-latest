@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <header className="w-full" suppressHydrationWarning>
       {/* top bar for sale */}
-      <div className="w-full bg-[#262626] overflow-x-scroll whitespace-nowrap py-3">
+      <div className="w-full bg-[#262626] overflow-x-scroll whitespace-nowrap py-3 no-scrollbar">
         <div className="flex items-center gap-24 px-4">
           {[
             {

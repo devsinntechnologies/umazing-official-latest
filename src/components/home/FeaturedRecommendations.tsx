@@ -59,7 +59,7 @@ const FeaturedRecommendations = () => {
           {isLoading
             ? Array.from({ length: 4 }).map((_, index) => (
                 <SwiperSlide key={index}>
-                  <Skeleton className="w-full h-[250px] sm:h-[300px] lg:h-[386px] bg-gray-200 rounded-sm" />
+                  <Skeleton className="w-full h-[250px] sm:h-[300px] lg:h-[386px]" />
                 </SwiperSlide>
               ))
             : products.map((product, index) => (

@@ -14,6 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Searchbar from "./Searchbar";
+import { useGetCategoryByIdQuery } from "@/hooks/UseCategories";
 
 const FilteredProducts = () => {
   const [triggerFetch, setTriggerFetch] = useState(false);
@@ -72,6 +73,54 @@ const FilteredProducts = () => {
     refetch();
   }, [pageNo, refetch]);
 
+  const {
+    data: singleCategoryData,
+    isLoading: isCategoryLoading,
+    refetch: refetchCategory,
+  } = useGetCategoryByIdQuery(CategoryId);
+
+  useEffect(() => {
+    if (CategoryId) refetchCategory();
+  }, [CategoryId, refetchCategory]);
+
+  const activeFilters = [];
+
+  if (name) activeFilters.push({ label: name, key: "name" });
+  if (condition) activeFilters.push({ label: condition, key: "condition" });
+  if (city) activeFilters.push({ label: city, key: "city" });
+  if (minPrice || maxPrice)
+    activeFilters.push({
+      label: `Price: $${minPrice} - $${maxPrice}`,
+      key: ["minPrice", "maxPrice"],
+    });
+  if (claim) activeFilters.push({ label: claim, key: "claim" });
+  if (onlyOfferProducts)
+    activeFilters.push({
+      label: "Only Offer Products",
+      key: "onlyOfferProducts",
+    });
+  if (CategoryId)
+    activeFilters.push({
+      label: isCategoryLoading
+        ? "Loading..."
+        : `Category: ${singleCategoryData?.data?.name || "Unknown"}`,
+      key: "categoryId",
+    });
+  if (offerId)
+    activeFilters.push({ label: `Offer ID: ${offerId}`, key: "offerId" });
+
+  const removeFilter = (key: string | string[]) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (Array.isArray(key)) {
+      key.forEach((k) => params.delete(k));
+    } else {
+      params.delete(key);
+    }
+
+    router.push(`?${params.toString()}`);
+  };
+
   return (
     <div className="w-full space-y-8">
       <div className="w-full flex md:items-center justify-between flex-col md:flex-row gap-5">
@@ -98,37 +147,29 @@ const FilteredProducts = () => {
       </div>
       {/* Active filter and total results */}
       <div className="w-full bg-[#F2F4F5] px-6 py-3 text-sm gap-4 flex items-center justify-between">
-        {/* Active filters */}
+        {/* Active Filters */}
         <div className="flex-1 gap-3 flex items-center justify-start">
           <h5 className="text-[#5F6C72]">Active Filters:</h5>
           <div className="w-[400px] flex-auto overflow-x-scroll no-scrollbar">
             <div className="w-fit flex items-center gap-3">
-              {[
-                "Electronic Devices",
-                "Laptops",
-                "Smartphones",
-                "Smartphones",
-                "Smartphones",
-                "Electronic Devices",
-                "Laptops",
-                "Smartphones",
-                "Smartphones",
-                "Smartphones",
-              ].map((filter, index) => (
+              {activeFilters.map((filter, index) => (
                 <button
                   key={index}
-                  className="gap-2 flex items-center justify-center"
+                  className="gap-2 flex items-center justify-center px-2 py-1"
+                  onClick={() => removeFilter(filter.key)}
                 >
-                  <p className="text-nowrap">{filter}</p>
-                  <X size={12} />
+                  <p className="text-nowrap">{filter.label}</p>
+                  <X size={12} className="text-destructive cursor-pointer" />
                 </button>
               ))}
             </div>
           </div>
         </div>
+
+        {/* Total Results */}
         <div className="w-fit">
           <p className="text-[#5F6C72]">
-            <span className="font-semibold text-black">{products.length}</span>{" "}
+            <span className="font-semibold text-black">{productsData ? products.length : "_"}</span>{" "}
             Results found.
           </p>
         </div>

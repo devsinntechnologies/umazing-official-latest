@@ -69,7 +69,7 @@ const Searchbar: React.FC = () => {
         )}
       </div>
       <button
-        className={`py-2 px-3 border-0 text-black text-lg flex items-center justify-center gap-2`}
+        className={`cursor-pointer py-2 px-3 border-0 text-black text-lg flex items-center justify-center gap-2`}
         type="submit"
         disabled={isSearchDisabled}
       >

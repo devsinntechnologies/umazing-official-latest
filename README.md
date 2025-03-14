@@ -25,7 +25,9 @@ Then, open [http://localhost:3000](http://localhost:3000) in your browser.
 - Use **PascalCase** for `.tsx` component files.
 - Use **kebab-case** for route names (e.g., `forgot-password`).
 
-## Hydration Issues:
+## Project Info:
+**Two Product Cards**: Main and Filter
+### Hydration Issues:
 **Cause Component:** /ui/dropdown-menu.tsx
 
 ## Development
