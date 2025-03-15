@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image';
+import Link from 'next/link';
 
 
 const products = [
@@ -100,7 +101,9 @@ const page = () => {
     <div className='flex flex-col space-y-4 py-5'>
 <div className='flex w-full justify-between pb-5'>
   <h1 className='text-4xl font-bold'>Product Listing</h1>
-  <Button>Add New Product</Button>
+ <Link href='/seller/add-new-product'>
+ <Button>Add New Product</Button>
+ </Link>
 </div>
 <div className='w-full h-[500px] flex gap-4 '>
   <div className='w-[60%] h-full'>
