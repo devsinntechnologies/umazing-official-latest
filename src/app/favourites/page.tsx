@@ -6,7 +6,7 @@ import ProductCard from "@/components/ProductCard";
 import { useGetUserFavouriteQuery, useRemoveFromFavouriteMutation } from "@/hooks/UseFavourite";
 import { useSelector } from "react-redux";
 import withAuth from "@/components/hoc/withAuth";
-import { Skeleton } from "@/components/ui/skeleton"; // ✅ Import Skeleton
+import { Skeleton } from "@/components/ui/skeleton";
 import { toast } from "sonner";
 
 const Page = () => {
@@ -15,6 +15,8 @@ const Page = () => {
   const isLoggedIn = useSelector((state: any) => state.authSlice.isLoggedIn);
   const [triggerFetch, setTriggerFetch] = useState(false);
   const [favourite, setFavourite] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredFavourite, setFilteredFavourite] = useState([]);
 
   useEffect(() => {
     if (userId && isLoggedIn) {
@@ -31,6 +33,21 @@ const Page = () => {
       setFavourite(favouriteItems.data);
     }
   }, [favouriteItems]);
+
+  useEffect(() => {
+    const debounceTimeout = setTimeout(() => {
+      if (searchTerm.trim() === "") {
+        setFilteredFavourite(favourite);
+      } else {
+        const filtered = favourite.filter((fav) =>
+          fav.Product.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setFilteredFavourite(filtered);
+      }
+    }, 300);
+
+    return () => clearTimeout(debounceTimeout);
+  }, [searchTerm, favourite]);
   
   const handleRemove = async (favouriteId: string) => {
     const toastId = toast.loading("Removing from Favourites");
@@ -69,10 +86,12 @@ const Page = () => {
             </p>
           </div>
           <div className="w-full md:w-60 lg:w-94 h-[50px] flex items-center border-[1.5px] border-border rounded-sm drop-shadow-xs py-2 px-3 text-sm text-black">
-            <input
+          <input
               type="text"
               placeholder="Search favourites"
               className="w-full h-full outline-0 border-0 px-2 text-xs md:text-sm !text-black placeholder:text-black"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
             <button className="rounded rounded-l-none cursor-pointer">
               <Search size={24} />
@@ -80,7 +99,7 @@ const Page = () => {
           </div>
         </div>
         {/* favourite products */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-7">
+        <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2 md:gap-7">
           {isLoading
             ? Array.from({ length: 10 }).map((_, index) => (
                 <Skeleton
@@ -88,7 +107,7 @@ const Page = () => {
                   className="w-full h-[250px] sm:h-[300px] lg:h-[386px] bg-gray-200 rounded-sm"
                 />
               ))
-            : favourite.map((fav, index) => (
+            : filteredFavourite.map((fav, index) => (
                 <ProductCard
                   key={fav.id}
                   product={fav.Product}

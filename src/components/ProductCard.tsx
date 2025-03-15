@@ -18,6 +18,7 @@ import { useAddToCartMutation, useGetUserCartQuery } from "@/hooks/UseCart";
 
 interface ProductCardProps {
   className?: string;
+  imageClassName?: string;
   isTrending?: boolean;
   isDiscount?: boolean;
   product: any;
@@ -31,6 +32,7 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({
   className,
+  imageClassName,
   isTrending,
   isDiscount,
   product,
@@ -154,7 +156,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       <Link href={`/products/${product.id}`} className="w-full flex flex-col">
         <div className="bg-[#FAFAFA]">
           <Image
-            className="w-full h-[140px] md:h-[180px] lg:h-[200px] xl:h-[230px] object-cover"
+            className={cn("w-full h-[160px] md:h-[180px] lg:h-[200px] xl:h-[230px] object-cover", imageClassName)}
             width={500}
             height={500}
             src={
@@ -167,10 +169,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </div>
         <div className="w-full space-y-3 px-2 py-4">
           <div className="space-y-2">
-            <h3 className="text-sm md:text-base text-secondary capitalize truncate-multiline-2 h-12">
+            <h3 className="text-xs sm:text-sm md:text-base text-secondary capitalize truncate-multiline-2 h-8 sm:h-10 md:h-12">
               {product.name}
             </h3>
-            <p className="text-base md:text-lg xl:text-2xl font-semibold text-black">
+            <p className="text-lg xl:text-2xl font-semibold text-black">
               {CURRENCY}
               <span className=""> {product.basePrice}.00</span>
             </p>
@@ -182,7 +184,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           </div>
           <div className="h-fit flex items-center justify-start gap-3 text-sm">
             <Stars rating={product.review} />
-            <p className="text-base font-bold">{product.review}</p>
+            <p className="text-sm md:text-base font-bold">{product.review}</p>
           </div>
         </div>
       </Link>
@@ -197,22 +199,22 @@ const ProductCard: React.FC<ProductCardProps> = ({
             </button>
           ) : (
             <button
-              className="p-2 rounded-full bg-gray-200 size-10"
+              className="p-2 rounded-full bg-gray-200 flex items-center justify-center size-8 md:size-10"
               onClick={product.isFavorite ? handleRemoveFromFavourites : handleAddToFavorites}
             >
               {/* Show loader while adding/removing */}
               {addingToFav || removingFromFav ? (
-                <Loader2 size={20} className="animate-spin text-black size-6" />
+                <Loader2 size={20} className="animate-spin text-black size-5.5 md:size-6" />
               ) : product.isFavorite ? (
-                <Heart size={20} color="red" fill="red" className="size-6" />
+                <Heart size={20} color="red" fill="red" className="size-5.5 md:size-6" />
               ) : (
-                <Heart size={20} className="size-6 text-black font-light" />
+                <Heart size={20} className="size-5.5 md:size-6 text-black font-light" />
               )}
             </button>
           ))}
       </div>
       {isTrending && (
-        <p className="absolute top-4 left-4 rounded-full px-2 py-1 text-[10px] tracking-wider bg-destructive text-white font-semibold shadow-lg">
+        <p className="absolute top-4 left-4 rounded-full px-2 py-1 text-[8px] md:text-[10px] tracking-wider bg-destructive text-white font-semibold shadow-lg">
           Trending
         </p>
       )}

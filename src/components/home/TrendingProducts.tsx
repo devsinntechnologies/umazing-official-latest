@@ -32,19 +32,19 @@ const TrendingProducts = () => {
 
   return (
     <div className="space-y-6 md:space-y-10">
-      <div className="w-full flex items-center justify-between">
+      <div className="w-full flex items-center justify-center md:justify-between">
         {/* empty div for alignments */}
         <div className="hidden md:block md:w-40" />
-      <h1 className="text-lg sm:text-xl md:text-3xl lg:text-5xl text-center font-bold">
+      <h1 className="text-xl md:text-3xl lg:text-5xl text-center font-bold">
       Trending Products
       </h1>
-      <Link href='/products'>
+      <Link href='/products' className="hidden md:block">
       <Button variant="link">
         View All
       </Button>
       </Link>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-7">
+      <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2 md:gap-7">
       {isLoading
           ? Array.from({ length: 10 }).map((_, index) => (
               <Skeleton
@@ -64,6 +64,11 @@ const TrendingProducts = () => {
               />
             ))}
       </div>
+      <Link href='/products' className="md:hidden block">
+            <Button variant="link">
+              View All
+            </Button>
+            </Link>
     </div>
   );
 };
